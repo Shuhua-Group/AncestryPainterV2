@@ -6,5 +6,13 @@ Here are shown the source Code and example files of AncestryPainterV2.
 
 
 # Usage
-Rscript ancestry.fraction.R -q example.8.Q -i example.8.ind -t Kirgiz,Yoruba,Sardian,Mala -o example.8  -p example.8.order -c example.8.color
+```
+Rscript ancestry.fraction.R \
+        -q example.8.Q \
+        -i example.8.ind \
+        -t Kirgiz,Yoruba,Sardian,Mala \
+        -o example.8  \
+        -p example.8.order \
+        -c example.8.color
+```
 
