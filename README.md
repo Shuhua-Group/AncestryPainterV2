@@ -17,3 +17,4 @@ sectorplot(Q = exp_q, ind = exp_ind, target = c("Yoruba", "French", "Han"), popo
 radiationplot(data = exp_fst.local, target = "target", global_mode = T, sorting = T, layers = c(0.03, 0.06, 0.09, 0.12))
 ```
 
+
