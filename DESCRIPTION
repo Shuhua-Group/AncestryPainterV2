@@ -1,0 +1,51 @@
+Package: AncestryPainterV2
+Title: Visualization of Ancestry Makeup and Genetic Difference
+Version: 0.1
+Authors@R:
+    c(person(given = "Shuanghui",
+             family = "Chen",
+             role = c("aut", "cre", "trl", "com"),
+             email = "chenshh@shanghaitech.edu.cn",
+             comment = structure("YOUR-ORCID-ID", .Names = "ORCID")),
+      person(given = "Qidi",
+             family = "Feng",
+             role = c("aut"),
+             email = "example1@picb.ac.cn",
+             comment = structure("YOUR-ORCID-ID", .Names = "ORCID")),
+      person(given = "Dongsheng",
+             family = "Lu",
+             role = c("aut"),
+             email = "example2@picb.ac.cn",
+             comment = structure("YOUR-ORCID-ID", .Names = "ORCID")),
+      person(given = "Yuwen",
+             family = "Pan",
+             role = c("aut"),
+             email = "panyuwen@picb.ac.cn",
+             comment = structure("YOUR-ORCID-ID", .Names = "ORCID")),
+      person(given = "Xiaohan",
+             family = "Zhao",
+             role = c("ctb", "com"),
+             email = "example5@fudan.edu.cn",
+             comment = structure("YOUR-ORCID-ID", .Names = "ORCID")),
+      person(given = "Chang",
+             family = "Lei",
+             role = c("ctb", "com"),
+             email = "example6@fudan.edu.cn",
+             comment = structure("YOUR-ORCID-ID", .Names = "ORCID")),
+      person(given = "Jiaojiao",
+             family = "Liu",
+             role = c("ctb", "com"),
+             email = "example6@fudan.edu.cn",
+             comment = structure("YOUR-ORCID-ID", .Names = "ORCID")),
+      person(given = "Shuhua",
+             family = "Xu",
+             role = c("fnd", "ths"),
+             email = "xushua@fudan.edu.cn",
+             comment = structure("0000-0002-1975-1002", .Names = "ORCID"))
+     )
+Description: Based on a simple sector graphing function, this R package can be used to visualize the ancestry proprtion inferred by population genetics software(e.g.,ADMIXTURE) and genetic difference (e.g., FST).
+Imports: graphics
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
