@@ -4,6 +4,10 @@ AncestryPainter is a graphing tool developed by Qidi Feng and Dongsheng Lu in 20
 
 Since Aug, 2021, a new version of AncestryPainter has been developed by Shuanghui Chen with her collabraters. Now this porject is still ongoing.
 
+## Installation
+```
+devtools::install_github("Shuhua-Group/AncestryPainterV2")
+```
 
 ## Example
 
