@@ -19,13 +19,16 @@ Here are shown the source Code and example files of AncestryPainterV2.
 exp_q <- read.table("./inst/extdata/exp_ances.8.Q", header = F)
 exp_ind <- readtable('./inst/extdata/exp_ances.8.ind', header = F)
 exp_order <- read.table('./inst/extdata/exp_ances.8.order', header = F)
+exp_cols <- read.table('./inst/extdata/exp_ances.8.color', header = F)
 
 # Graphing
 pdf("exp_ances.8.pdf", width = 45, height = 45)
   sectorplot(Q = exp_q, ind = exp_ind, target = c("Yoruba", "French", "Han"), 
-             poporder = exp_order$V1, popgroup = exp_order$V2, popcols = exp_cols)
+             poporder = exp_order$V1, popgroup = exp_order$V2, ancescols = exp_cols)
 dev.off()
 ```
+![](inst/figures/exp_ances.8.png)<!-- -->
+
 
 ### Genetic Difference
 ```
@@ -38,3 +41,4 @@ pdf("exp_fst.local.8.pdf", width = 45, height = 45)
                 legend_mode = T, sorting = T, layers = c(0.03, 0.06, 0.09, 0.12))
 dev.off()
 ```
+
