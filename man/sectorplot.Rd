@@ -7,7 +7,8 @@
 sectorplot(Q, ind, target = NULL, poporder = NULL, popgroup = NULL,
   ancescols = NULL, sort_order = FALSE, rmin = 2, rmax = 3.7,
   amin = -265, amax = 85, tar_ang1 = 0, tar_ang2 = 360,
-  arrow = FALSE, prgap = 0.2, noline = FALSE)
+  arrow = FALSE, legend_mode = FALSE, ancesnames = NULL,
+  prgap = 0.2, noline = FALSE)
 }
 \arguments{
 \item{Q}{A numeric data frame of ancestry proportion (columns: ancestry componenyt; rows: individual). e.g., an output ".Q" file of the softaware ADMIXTURE.}
@@ -37,6 +38,10 @@ sectorplot(Q, ind, target = NULL, poporder = NULL, popgroup = NULL,
 \item{tar_ang2}{The end angle of the target leyout. Defualt is 360.}
 
 \item{arrow}{Logical. Whether to draw the arrows to the target pies.}
+
+\item{legend_mode}{Logical. Whether to draw the legend of ancestry components.}
+
+\item{ancesnames}{Character. To specify the names of ancestry components. If not specified, would be shown as "Ancestry_1" "Ancestry_2" and so on.}
 
 \item{prgap}{A numeric value for gap length. Default is 0.2.}
 
