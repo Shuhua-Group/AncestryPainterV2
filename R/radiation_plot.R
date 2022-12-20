@@ -48,7 +48,7 @@ ring <- function(x0, y0, layers, rstart, flat){
 }
 
 #Draw population labels
-plot_values <- function(x0, y0, data, amax, amin, rstart, label_mode){
+plot_values <- function(x0, y0, data, amax, amin, rstart, show_label){
   #amin: minimum angle ( the angle of first population ) 
   #amax: maximum angle ( the angle of last population )
   npop <- nrow(data)  #total number of populations
@@ -62,7 +62,7 @@ plot_values <- function(x0, y0, data, amax, amin, rstart, label_mode){
     rpost <- rpre + data[i,val_col]
     pmean <- sector(x0, y0, angle1 = ang1, angle2 = ang2, radius1 = rpre, radius2 = rpost, col = data[i,col_col])
     # Labels
-    if(label_mode){
+    if(show_label){
       if(pmean[3] < -90){
          text(x0 + pmean[1], y0 + pmean[2], data[i, pop_col], srt = 180 + pmean[3], adj = c(1.1, 0.5), cex = 0.7, font = 1, col = colors()[490])
         }else{
@@ -96,12 +96,12 @@ plot_legend <- function(data){
 #' @param border A numeric value of border. Default is 0.3.
 #' @param rstart A numeric value of radius. Default is 0.02.
 #' @param flat A numeric value. Flattening coefficient of radiation bars. Default is 1.2.
-#' @param legend_mode Logical. Whether to draw the legend of region information. Default is FALSE.
-#' @param label_mode Logical. Whether to print the population labels. Default is TRUE.
+#' @param show_legend Logical. Whether to draw the legend of region information. Default is FALSE.
+#' @param show_label Logical. Whether to print the population labels. Default is TRUE.
 #' @param sorting Logical. Whether to sort population order according to their genetic difference. Default is FALSE.
 #' @return NULL
 #' @export
-radiationplot <- function(data, target = "target", cenvals = c(0.5, 0.5), layers = NULL, num = 4, amax = -250, amin = 70, border = 0.3, rstart = 0.02, flat = 1.2, legend_mode = FALSE, label_mode = TRUE, sorting = FALSE){
+radiationplot <- function(data, target = "target", cenvals = c(0.5, 0.5), layers = NULL, num = 4, amax = -250, amin = 70, border = 0.3, rstart = 0.02, flat = 1.2, show_legend = FALSE, show_label = TRUE, sorting = FALSE){
 
   vals <- data[,val_col]
   if(is.null(layers)){
@@ -127,9 +127,9 @@ radiationplot <- function(data, target = "target", cenvals = c(0.5, 0.5), layers
   # Draw the rings as markers of fst values
   ring(x0, y0, layers, rstart, flat)
   # Draw the sectors showing fst values
-  plot_values(x0, y0, data, amax, amin, rstart, label_mode)
+  plot_values(x0, y0, data, amax, amin, rstart, show_label)
   # Draw the legend
-  if(legend_mode){
+  if(show_legend){
     plot_legend(data = data)
   }
   # Done

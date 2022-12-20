@@ -23,7 +23,7 @@ exp_cols <- read.table('./inst/extdata/exp_ances.8.color', stringsAsFactors = F,
 
 # Graphing
 pdf("exp_ances.8.pdf", width = 45, height = 45)
-  sectorplot(Q = exp_q, ind = exp_ind, target = c("Yoruba", "French", "Han"), poporder = exp_order$V1, popgroup = exp_order$V2, ancescols = exp_cols, tar_ang1 = 90, tar_ang2 = 450, legend_mode = T)
+  sectorplot(Q = exp_q, ind = exp_ind, target = c("Yoruba", "French", "Han"), poporder = exp_order$V1, popgroup = exp_order$V2, ancescols = exp_cols, tar_ang1 = 90, tar_ang2 = 450, show_legend = T)
 dev.off()
 ```
 ![](inst/figures/exp_ances.8.jpg)<!-- -->
@@ -37,7 +37,7 @@ exp_fst.locl <- read.table("./inst/extdata/exp_fst.local.txt", header = F)
 # Graphing
 pdf("exp_fst.local.8.pdf", width = 10, height = 10)
   radiationplot(data = exp_fst.local, target = "KGZ", 
-                legend_mode = T, sorting = T, layers = c(0.03, 0.06, 0.09, 0.12))
+                show_legend = T, sorting = T, layers = c(0.03, 0.06, 0.09, 0.12))
 dev.off()
 ```
 ![](inst/figures/exp_fst.local.png)<!-- -->

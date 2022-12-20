@@ -196,14 +196,14 @@ Draw_ances_legend <- function(ancescols, ancesnames){
 #' @param tar_ang1 The start angle of the target leyout. Default is 0.
 #' @param tar_ang2 The end angle of the target leyout. Defualt is 360.
 #' @param arrow Logical. Whether to draw the arrows to the target pies.
-#' @param legend_mode Logical. Whether to draw the legend of ancestry components.
+#' @param show_legend Logical. Whether to draw the legend of ancestry components.
 #' @param ancesnames Character. To specify the names of ancestry components. If not specified, would be shown as "Ancestry_1" "Ancestry_2" and so on.
 #' @param prgap A numeric value for gap length. Default is 0.2.
 #' @param noline Logical. Whether to remove the black lines between populations. Default is FALSE.
 #' @return NULL
 #' @export
 sectorplot <- function(Q, ind, target = NULL, poporder = NULL, popgroup = NULL, ancescols = NULL, sort_order = FALSE,
-                       rmin = 2, rmax = 3.7, amin = -265, amax = 85, tar_ang1 = 0, tar_ang2 = 360, arrow = FALSE, legend_mode = FALSE, ancesnames = NULL,
+                       rmin = 2, rmax = 3.7, amin = -265, amax = 85, tar_ang1 = 0, tar_ang2 = 360, arrow = FALSE, show_legend = FALSE, ancesnames = NULL,
                        prgap = 0.2, noline = FALSE){
 
   #bind individual information to ancestry composition in .Q file 
@@ -304,7 +304,7 @@ sectorplot <- function(Q, ind, target = NULL, poporder = NULL, popgroup = NULL, 
     Draw_target_pie(orig = ances_df, rmin = rmin, target = target, tar_ang1 = tar_ang1, tar_ang2 = tar_ang2, ancescols = ancescols, arrow = arrow, angle_df = angle_df)
   }
   #Draw the legend showing the names of ancestry components 
-  if(legend_mode){
+  if(show_legend){
     Draw_ances_legend(ancescols = ancescols, ancesnames = ancesnames)
   }
   #The end of the plot

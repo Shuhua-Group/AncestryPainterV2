@@ -6,8 +6,8 @@
 \usage{
 radiationplot(data, target = "target", cenvals = c(0.5, 0.5),
   layers = NULL, num = 4, amax = -250, amin = 70, border = 0.3,
-  rstart = 0.02, flat = 1.2, legend_mode = FALSE,
-  label_mode = TRUE, sorting = FALSE)
+  rstart = 0.02, flat = 1.2, show_legend = FALSE,
+  show_label = TRUE, sorting = FALSE)
 }
 \arguments{
 \item{data}{A four-column data frame. 1: population label (character); 2: region label (character); 3: genetic difference (numeric); 4: color code.}
@@ -30,9 +30,9 @@ radiationplot(data, target = "target", cenvals = c(0.5, 0.5),
 
 \item{flat}{A numeric value. Flattening coefficient of radiation bars. Default is 1.2.}
 
-\item{legend_mode}{Logical. Whether to draw the legend of region information. Default is FALSE.}
+\item{show_legend}{Logical. Whether to draw the legend of region information. Default is FALSE.}
 
-\item{label_mode}{Logical. Whether to print the population labels. Default is TRUE.}
+\item{show_label}{Logical. Whether to print the population labels. Default is TRUE.}
 
 \item{sorting}{Logical. Whether to sort population order according to their genetic difference. Default is FALSE.}
 }
