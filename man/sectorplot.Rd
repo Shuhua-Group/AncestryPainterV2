@@ -4,11 +4,13 @@
 \alias{sectorplot}
 \title{Sector plot}
 \usage{
-sectorplot(Q, ind, target = NULL, poporder = NULL, popgroup = NULL,
-  ancescols = NULL, sort_order = FALSE, rmin = 2, rmax = 3.7,
+sectorplot(Q, ind, target = NULL, poporder = NULL, ancescols = NULL,
+  sort_order = FALSE, rmin = 2, rmax = 3.7, tar.r = 0.6,
   amin = -265, amax = 85, tar_ang1 = 0, tar_ang2 = 360,
-  arrow = FALSE, show_legend = FALSE, ancesnames = NULL,
-  prgap = 0.2, noline = FALSE)
+  arrow = FALSE, legend_mode = FALSE, ancesnames = NULL,
+  prgap = 0.2, noline = FALSE, pop.lab.cex = NULL,
+  pop.lab.col = "black", tar.lab.cex = 6, tar.lab.col = "navy",
+  arrow.col = "red", arrow.lwd = 2, legend.pos = "topright")
 }
 \arguments{
 \item{Q}{A numeric data frame of ancestry proportion (columns: ancestry componenyt; rows: individual). e.g., an output ".Q" file of the softaware ADMIXTURE.}
@@ -19,8 +21,6 @@ sectorplot(Q, ind, target = NULL, poporder = NULL, popgroup = NULL,
 
 \item{poporder}{Character. The populations to be included in the figure, also the display order of the populations in the figure.}
 
-\item{popgroup}{Character. The group information of populations.}
-
 \item{ancescols}{The color code of each ancestry component in the figure.}
 
 \item{sort_order}{A logical value to define whether to sort the order of the populations, which will be musked if "poporder" is specified.}
@@ -28,6 +28,8 @@ sectorplot(Q, ind, target = NULL, poporder = NULL, popgroup = NULL,
 \item{rmin}{The radium of the inner ring. Default is 2.}
 
 \item{rmax}{The radium of the outer ring. Default is 3.7.}
+
+\item{tar.r}{The radius of the target pie chart. Defualt: 0.6.}
 
 \item{amin}{The angle at which the ring is initiated. Defualt is -265.}
 
@@ -39,13 +41,27 @@ sectorplot(Q, ind, target = NULL, poporder = NULL, popgroup = NULL,
 
 \item{arrow}{Logical. Whether to draw the arrows to the target pies.}
 
-\item{show_legend}{Logical. Whether to draw the legend of ancestry components.}
+\item{legend_mode}{Logical. Whether to draw the legend of ancestry components.}
 
 \item{ancesnames}{Character. To specify the names of ancestry components. If not specified, would be shown as "Ancestry_1" "Ancestry_2" and so on.}
 
 \item{prgap}{A numeric value for gap length. Default is 0.2.}
 
 \item{noline}{Logical. Whether to remove the black lines between populations. Default is FALSE.}
+
+\item{pop.lab.cex}{The cex of the population labels.}
+
+\item{pop.lab.col}{The color of population labels. The length of this parameter can be 1 or equal to the number of the populations.Default: "black".}
+
+\item{tar.lab.cex}{The cex of the target label.}
+
+\item{tar.lab.col}{The color of the target label. Default: "navy" (namely, colors()[490])}
+
+\item{arrow.col}{The color of the arrow(s). Default: "red".}
+
+\item{arrow.lwd}{The line width of the arrow(s). Default: 2.}
+
+\item{legend.pos}{The position of the legend. Can be set as "top", "topleft", "topright", "bottom", "bottomleft", "bottomright", "left", and "right".}
 }
 \description{
 This function draws a sector plot to visualize ancestry proportion.

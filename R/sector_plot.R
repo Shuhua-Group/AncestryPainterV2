@@ -62,7 +62,7 @@ Draw_pop_line <- function(rmin, rmax, amin, amax, npop, prgap){
   lstart <- rmin
   lend <- rmax - prgap*(rmax-rmin)/Knum
   #get pop_number angles
-  angles <- seq(amin, amax, length=npop+1)
+  angles <- seq(amin, amax, length = npop+1)
   for(tmp in angles){
     px <- c(lstart*cos(tmp*pi/180), lend*cos(tmp*pi/180))
     py <- c(lstart*sin(tmp*pi/180), lend*sin(tmp*pi/180))
@@ -85,9 +85,8 @@ Target_Layout <- function(tar_ang1, tar_ang2, cendis, num){
 }
 
 
-Draw_target_pie <- function(orig, rmin, target, ancescols, cendis = 1, tar_ang1 = 0, tar_ang2 = 360, arrow = FALSE, angle_df = NULL){
+Draw_target_pie <- function(orig, rmin, target, ancescols, tar.r = 0.6, cendis = 1, tar_ang1 = 0, tar_ang2 = 360, arrow = FALSE, angle_df = NULL, tar.lab.cex = 6, tar.lab.col = "navy", arrow.col = "red", arrow.lwd = 2){
   num <- length(target)
-  tar_R <- 0.6 
   
   if(num == 1){
     cendis <- 0  # The single target lays at the center of the plot
@@ -109,11 +108,11 @@ Draw_target_pie <- function(orig, rmin, target, ancescols, cendis = 1, tar_ang1 
     for( j in Kstart:ncol(data) ){
       val <- mean(data[,j])
       apost <- apre + 360*val
-      Sector(x0 = tar_cen[1], y0 = tar_cen[2], angle1 = apre, angle2 = apost, radius1 = 0, radius2 = tar_R, col = ancescols[j - Kstart + 1])
+      Sector(x0 = tar_cen[1], y0 = tar_cen[2], angle1 = apre, angle2 = apost, radius1 = 0, radius2 = tar.r, col = ancescols[j - Kstart + 1])
       apre <- apost
     }
     # Label of target
-    text(tar_cen[1], tar_cen[2] + tar_R*1.3, tar, cex = 6, font = 2, col = colors()[490])
+    text(tar_cen[1], tar_cen[2] + tar.r*1.3, tar, cex = tar.lab.cex, font = 2, col = tar.lab.col)
     
     # Arrow to target
     if(arrow){
@@ -124,10 +123,10 @@ Draw_target_pie <- function(orig, rmin, target, ancescols, cendis = 1, tar_ang1 
       
       arrow_end <- c(rmin * 0.95 * cos(arrow_ang), rmin * 0.95 * sin(arrow_ang))
       vec <- arrow_end - tar_cen
-      extd_ratio <- sqrt(sum(vec ** 2))/(tar_R * 1.05)
+      extd_ratio <- sqrt(sum(vec ** 2))/(tar.r * 1.05)
       arrow_start <- tar_cen + vec/extd_ratio
 
-      arrows(x0 = arrow_start[1], y0 = arrow_start[2], x1 = arrow_end[1], y1 = arrow_end[2], length = 0.25, angle = 30, code = 2, col = "red", lwd = 2)
+      arrows(x0 = arrow_start[1], y0 = arrow_start[2], x1 = arrow_end[1], y1 = arrow_end[2], length = 0.25, angle = 30, code = 2, col = arrow.col, lwd = arrow.lwd)
     }
   }
 
@@ -142,24 +141,31 @@ Write_lab <- function(ang, xx, yy, text, cex_no, text_col){
   }
 }
 
-Write_pop_lab <- function(data, amax, amin, rmax, rmin, prgap, npop, poporder, popgroup){
+Write_pop_lab <- function(data, amax, amin, rmax, rmin, prgap, npop, poporder, pop.lab.col = "black", pop.lab.cex){
   angelperpop <- (amax - amin)/npop
   angpre <- amin
   lend <- rmax - prgap * (rmax - rmin)/Knum
+
+  if(is.null(pop.lab.cex)){
+    cex_no <- 220/npop
+    if(cex_no > 6){
+      cex_no <- 6
+    }else if(cex_no < 1.5){
+      cex_no <- 1.5
+    }
+  }else{
+    cex_no <- pop.lab.cex
+  }
+
   for(i in 1:npop){
     ang <- angpre + angelperpop/2
     xx <- lend*cos(ang * pi/180)
     yy <- lend*sin(ang * pi/180)
-    cex_no = 220/npop
-    if(cex_no > 6){
-      cex_no <- 6
-      }else if(cex_no < 1.5){
-      cex_no <- 1.5
-    }
-    if(length(popgroup) == 0){
-      text_col <- "black"
+    
+    if(length(pop.lab.col) > 1){
+      text_col <- pop.lab.col[i]
     }else{
-      text_col <- popgroup[i]
+      text_col <- pop.lab.col
     }
     text <- poporder[i]
     Write_lab(ang, xx, yy, text, cex_no, text_col)
@@ -169,11 +175,11 @@ Write_pop_lab <- function(data, amax, amin, rmax, rmin, prgap, npop, poporder, p
 
 
 ####### VI. Draw legend ########
-Draw_ances_legend <- function(ancescols, ancesnames){
+Draw_ances_legend <- function(ancescols, ancesnames, legend.pos = "topright"){
   if(is.null(ancesnames)){
     ancesnames <- paste("Ancestry", 1:length(ancescols), sep = "_")
   }
-  legend('topright', legend = ancesnames, lwd = 5, col = ancescols, cex = 2.00, bty = 'n')
+  legend(legend.pos, legend = ancesnames, lwd = 5, col = ancescols, cex = 2.00, bty = 'n')
 }
 
 ####### VII. Plot the whole picture ######
@@ -186,25 +192,34 @@ Draw_ances_legend <- function(ancescols, ancesnames){
 #' @param ind A two-column data frame (1: population; 2: individual)."
 #' @param target Character. The target populations to be plotted as a pie chart in the center of the circle figure. The population must be included in input "ind" and "Q" data frame.
 #' @param poporder Character. The populations to be included in the figure, also the display order of the populations in the figure.
-#' @param popgroup Character. The group information of populations.
 #' @param ancescols The color code of each ancestry component in the figure.
 #' @param sort_order A logical value to define whether to sort the order of the populations, which will be musked if "poporder" is specified.
 #' @param rmin The radium of the inner ring. Default is 2.
 #' @param rmax The radium of the outer ring. Default is 3.7.
+#' @param tar.r The radius of the target pie chart. Defualt: 0.6.
 #' @param amin The angle at which the ring is initiated. Defualt is -265.
 #' @param amax The angle at which the ring is ended. Default is 85.
 #' @param tar_ang1 The start angle of the target leyout. Default is 0.
 #' @param tar_ang2 The end angle of the target leyout. Defualt is 360.
 #' @param arrow Logical. Whether to draw the arrows to the target pies.
-#' @param show_legend Logical. Whether to draw the legend of ancestry components.
+#' @param legend_mode Logical. Whether to draw the legend of ancestry components.
 #' @param ancesnames Character. To specify the names of ancestry components. If not specified, would be shown as "Ancestry_1" "Ancestry_2" and so on.
 #' @param prgap A numeric value for gap length. Default is 0.2.
 #' @param noline Logical. Whether to remove the black lines between populations. Default is FALSE.
+#' @param pop.lab.cex The cex of the population labels.
+#' @param pop.lab.col The color of population labels. The length of this parameter can be 1 or equal to the number of the populations.Default: "black".
+#' @param tar.lab.cex The cex of the target label.
+#' @param tar.lab.col The color of the target label. Default: "navy" (namely, colors()[490])
+#' @param arrow.col The color of the arrow(s). Default: "red".
+#' @param arrow.lwd The line width of the arrow(s). Default: 2.
+#' @param legend.pos The position of the legend. Can be set as "top", "topleft", "topright", "bottom", "bottomleft", "bottomright", "left", and "right".
 #' @return NULL
 #' @export
-sectorplot <- function(Q, ind, target = NULL, poporder = NULL, popgroup = NULL, ancescols = NULL, sort_order = FALSE,
-                       rmin = 2, rmax = 3.7, amin = -265, amax = 85, tar_ang1 = 0, tar_ang2 = 360, arrow = FALSE, show_legend = FALSE, ancesnames = NULL,
-                       prgap = 0.2, noline = FALSE){
+sectorplot <- function(Q, ind, target = NULL, poporder = NULL, ancescols = NULL, sort_order = FALSE,
+                       rmin = 2, rmax = 3.7, tar.r = 0.6, amin = -265, amax = 85, tar_ang1 = 0, tar_ang2 = 360, 
+                       arrow = FALSE, legend_mode = FALSE, ancesnames = NULL, prgap = 0.2, noline = FALSE, 
+                       pop.lab.cex = NULL, pop.lab.col = "black", tar.lab.cex = 6, tar.lab.col = "navy", arrow.col = "red", arrow.lwd = 2,
+                       legend.pos = "topright"){
 
   #bind individual information to ancestry composition in .Q file 
   ances_df <- cbind(ind[,c(2,1)], Q)
@@ -234,10 +249,12 @@ sectorplot <- function(Q, ind, target = NULL, poporder = NULL, popgroup = NULL, 
       auto_ind_order <- c()
       for(i in 1:ncol(subti_df)){
         subgroup <- names(major_ances[major_ances == i])
+        
         # to get population order
         subgroup_df <- subti_df[subgroup,]
         subgroup_order <- rownames(subgroup_df[order(subgroup_df[, i], decreasing = T),])
         auto_pop_order <- c(auto_pop_order, subgroup_order)
+        
         # to get individual order
         for(pop in subgroup_order){
           temp_pop_df <- ances_df[ances_df[,popcol] == pop,]
@@ -250,14 +267,12 @@ sectorplot <- function(Q, ind, target = NULL, poporder = NULL, popgroup = NULL, 
       cat(poporder, "\n")
       cat("automatically-sorted individual order:\n")
       cat(ind_order, "\n")
-      #write.table(poporder, paste0(fout, ".auto_sort.poporder"), quote = F, sep = "\t", row.names = F, col.names = F)
-      #write.table(ind_order, paste0(fout, ".auto_sort.indorder"), quote = F, sep = "\t", row.names = F, col.names = F)
     }else{
       poporder <- ances_df[!duplicated(ances_df[, popcol]),][, popcol]
     }
   }
   #print(poporder) #to debug
-  #print(length(poporder))
+  
   ances_df[,popcol] <- factor(ances_df[,popcol], levels = poporder)
   ances_df <- ances_df[order(ances_df[,popcol]),]
   ances_df <- ances_df[ances_df[,popcol] %in% poporder,] #must check whether all populations are in poporder file
@@ -266,7 +281,6 @@ sectorplot <- function(Q, ind, target = NULL, poporder = NULL, popgroup = NULL, 
   if(sort_order){
     rownames(ances_df) <- ances_df[,indcol]
     ances_df <- ances_df[ind_order,]
-    #cat("Hi!\n")
     rownames(ances_df) <- NULL
   }
   
@@ -287,27 +301,34 @@ sectorplot <- function(Q, ind, target = NULL, poporder = NULL, popgroup = NULL, 
   par('mar'=c(20, 20, 20, 20))
   par('xpd'=TRUE)
   plot(0, 0, xlim=c(-rmax, rmax), ylim=c(-rmax, rmax), axes=F, ann=F, type='n')
+
   #Paint ancestry of each individual in each population
   angle_df <- Paint_ind_in_pop(data = ances_df, rmin = rmin, rmax = rmax, 
                                amax = amax, amin = amin, prgap = prgap, popsize = popsize, npop = npop,
                                ancescols = ancescols)
+
   #Write all population labels
   Write_pop_lab(data = ances_df, amax = amax, amin = amin, 
                 rmax = rmax, rmin = rmin, prgap = prgap,
-                npop = npop, poporder = poporder, popgroup = popgroup)
+                npop = npop, poporder = poporder, pop.lab.col = pop.lab.col, pop.lab.cex = pop.lab.cex)
+
   #Draw the lines
   if(!noline){
     Draw_pop_line(rmin = rmin, rmax = rmax, amin = amin, amax = amax, npop = npop, prgap = prgap)
   }
+
   #Draw the pie chart of the target population
   if(length(target) > 0){
-    Draw_target_pie(orig = ances_df, rmin = rmin, target = target, tar_ang1 = tar_ang1, tar_ang2 = tar_ang2, ancescols = ancescols, arrow = arrow, angle_df = angle_df)
+    Draw_target_pie(orig = ances_df, rmin = rmin, target = target, tar.r = tar.r, tar_ang1 = tar_ang1, tar_ang2 = tar_ang2, ancescols = ancescols, arrow = arrow, angle_df = angle_df, tar.lab.cex = tar.lab.cex, tar.lab.col = tar.lab.cex, arrow.col = arrow.col, arrow.lwd = arrow.lwd)
   }
+
   #Draw the legend showing the names of ancestry components 
-  if(show_legend){
-    Draw_ances_legend(ancescols = ancescols, ancesnames = ancesnames)
+  if(legend_mode){
+    Draw_ances_legend(ancescols = ancescols, ancesnames = ancesnames, legend.pos = legend.pos)
   }
+
   #The end of the plot
+  invisible(ances_df)
 }
 
 
