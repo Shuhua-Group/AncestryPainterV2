@@ -40,7 +40,7 @@ dev.off()
 ### Genetic Difference
 ```
 # input
-> exp_fst.locl <- read.table("./inst/extdata/exp_fst.local.txt", header = F)
+> exp_fst.local <- read.table("./inst/extdata/exp_fst.local.txt", header = F)
 
 # Graphing
 > pdf("exp_fst.local.8.pdf", width = 10, height = 10)

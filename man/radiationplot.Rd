@@ -5,16 +5,23 @@
 \title{Radiation plot}
 \usage{
 radiationplot(data, target = "target", cenvals = c(0.5, 0.5),
-  layers = NULL, num = 4, amax = -250, amin = 70, border = 0.3,
-  rstart = 0.02, flat = 1.2, show_legend = FALSE,
-  show_label = TRUE, sorting = FALSE)
+  sorting = FALSE, layers = NULL, num = 4, amax = -250,
+  amin = 70, border = 0.3, rstart = 0.02, flat = 1.2,
+  label_mode = TRUE, pop.lab.cex = 0.7, pop.lab.font = 1,
+  pop.lab.col = "navy", legend_mode = FALSE, legend.pos = "topright",
+  legend.lwd = 5, legend.text.cex = 1, ring.text.col = "black",
+  ring.text.cex = 1, ring.text.font = 1, ring.line.col = "gray",
+  tar.lab.col = "black", tar.lab.cex = 1.1, tar.lab.font = 1,
+  core.line.col = "black")
 }
 \arguments{
 \item{data}{A four-column data frame. 1: population label (character); 2: region label (character); 3: genetic difference (numeric); 4: color code.}
 
 \item{target}{A character value to pass name of the target population. Default is "target".}
 
-\item{cenvals}{The coordinates of the center of the circle. Default is c(0.5, 0.5)}
+\item{cenvals}{The coordinates of the center of the circle. Default is c(0.5, 0.5).}
+
+\item{sorting}{Logical. Whether to sort population order according to their genetic difference. Default is FALSE.}
 
 \item{layers}{Numeric values of layers. This parameter will musk "num" if specified.}
 
@@ -30,11 +37,37 @@ radiationplot(data, target = "target", cenvals = c(0.5, 0.5),
 
 \item{flat}{A numeric value. Flattening coefficient of radiation bars. Default is 1.2.}
 
-\item{show_legend}{Logical. Whether to draw the legend of region information. Default is FALSE.}
+\item{label_mode}{Logical. Whether to print the population labels. Default is TRUE.}
 
-\item{show_label}{Logical. Whether to print the population labels. Default is TRUE.}
+\item{pop.lab.cex}{The cex of population labels. Default: 0.7.}
 
-\item{sorting}{Logical. Whether to sort population order according to their genetic difference. Default is FALSE.}
+\item{pop.lab.font}{The font of population labels. Default: 1.}
+
+\item{pop.lab.col}{The color of population labels. Default: "navy".}
+
+\item{legend_mode}{Logical. Whether to draw the legend of region information. Default is FALSE.}
+
+\item{legend.pos}{The position of the legend. Can be set as "top", "topleft", "topright", "bottom", "bottomleft", "bottomright", "left", and "right". Default: "topright".}
+
+\item{legend.lwd}{The line width of the legend colors.}
+
+\item{legend.text.cex}{The text size of the legend.}
+
+\item{ring.text.col}{The color of the text indicating the genetic distance. Default: "black".}
+
+\item{ring.text.cex}{The size of the text indicating the genetic distance. Default: 1.}
+
+\item{ring.text.font}{The font of the text indicating the genetic distance. Default: 1.}
+
+\item{ring.line.col}{The color of the outer rings. Default: "gray".}
+
+\item{tar.lab.col}{The color of the target label. Default: "black".}
+
+\item{tar.lab.cex}{The size of the target label. Default: 1.1.}
+
+\item{tar.lab.font}{The font of the target label. Default: 1.}
+
+\item{core.line.col}{The.color of the core edge.}
 }
 \description{
 This function draws a radiation plot to visualize the genetic distance
