@@ -77,7 +77,7 @@ Target_Layout <- function(tar_ang1, tar_ang2, cendis, num){
     tar_ang1 <- tar_ang2
     tar_ang2 <- temp
   }
-  angleinc <- (tar_ang2 - tar_ang1) / num
+  angleinc <- (tar_ang2 - tar_ang1) / (num - 1)
   angles <- seq(tar_ang1, tar_ang2, angleinc)
   xpos <- cos(angles * pi/180) * cendis
   ypos <- sin(angles * pi/180) * cendis 
@@ -197,6 +197,7 @@ Draw_ances_legend <- function(ancescols, ancesnames, legend.pos = "topright"){
 #' @param rmin The radium of the inner ring. Default is 2.
 #' @param rmax The radium of the outer ring. Default is 3.7.
 #' @param tar.r The radius of the target pie chart. Defualt: 0.6.
+#' @param cendis The distance from the center of a target pie chart to the center of the sectorplot. Default: 1.
 #' @param amin The angle at which the ring is initiated. Defualt is -265.
 #' @param amax The angle at which the ring is ended. Default is 85.
 #' @param tar_ang1 The start angle of the target leyout. Default is 0.
@@ -209,14 +210,14 @@ Draw_ances_legend <- function(ancescols, ancesnames, legend.pos = "topright"){
 #' @param pop.lab.cex The cex of the population labels.
 #' @param pop.lab.col The color of population labels. The length of this parameter can be 1 or equal to the number of the populations.Default: "black".
 #' @param tar.lab.cex The cex of the target label.
-#' @param tar.lab.col The color of the target label. Default: "navy" (namely, colors()[490])
+#' @param tar.lab.col The color of the target label. Default: "navy".
 #' @param arrow.col The color of the arrow(s). Default: "red".
 #' @param arrow.lwd The line width of the arrow(s). Default: 2.
 #' @param legend.pos The position of the legend. Can be set as "top", "topleft", "topright", "bottom", "bottomleft", "bottomright", "left", and "right".
 #' @return NULL
 #' @export
 sectorplot <- function(Q, ind, target = NULL, poporder = NULL, ancescols = NULL, sort_order = FALSE,
-                       rmin = 2, rmax = 3.7, tar.r = 0.6, amin = -265, amax = 85, tar_ang1 = 0, tar_ang2 = 360, 
+                       rmin = 2, rmax = 3.7, tar.r = 0.6, cendis = 1, amin = -265, amax = 85, tar_ang1 = 0, tar_ang2 = 360, 
                        arrow = FALSE, legend_mode = FALSE, ancesnames = NULL, prgap = 0.2, noline = FALSE, 
                        pop.lab.cex = NULL, pop.lab.col = "black", tar.lab.cex = 6, tar.lab.col = "navy", arrow.col = "red", arrow.lwd = 2,
                        legend.pos = "topright"){
@@ -233,8 +234,9 @@ sectorplot <- function(Q, ind, target = NULL, poporder = NULL, ancescols = NULL,
      }
      poporder <- inter_poporder
   }else{
-    cat("No population order specified. Sort the population order...\n")
+    cat("No population order specified.\n")
     if(sort_order){
+      cat("Sort the population order...\n")
       subti_df <- aggregate(ances_df[, 3:ncol(ances_df)], by = list(ances_df[,popcol]), FUN = mean)
       rownames(subti_df) <- subti_df[, "Group.1"]
       subti_df["Group.1"] <- NULL
@@ -263,10 +265,6 @@ sectorplot <- function(Q, ind, target = NULL, poporder = NULL, ancescols = NULL,
       }
       poporder <- auto_pop_order
       ind_order <- auto_ind_order[auto_ind_order %in% ind[,2]]
-      cat("automatically-sorted population order:\n")
-      cat(poporder, "\n")
-      cat("automatically-sorted individual order:\n")
-      cat(ind_order, "\n")
     }else{
       poporder <- ances_df[!duplicated(ances_df[, popcol]),][, popcol]
     }
@@ -319,7 +317,7 @@ sectorplot <- function(Q, ind, target = NULL, poporder = NULL, ancescols = NULL,
 
   #Draw the pie chart of the target population
   if(length(target) > 0){
-    Draw_target_pie(orig = ances_df, rmin = rmin, target = target, tar.r = tar.r, tar_ang1 = tar_ang1, tar_ang2 = tar_ang2, ancescols = ancescols, arrow = arrow, angle_df = angle_df, tar.lab.cex = tar.lab.cex, tar.lab.col = tar.lab.cex, arrow.col = arrow.col, arrow.lwd = arrow.lwd)
+    Draw_target_pie(orig = ances_df, rmin = rmin, target = target, tar.r = tar.r, cendis = cendis, tar_ang1 = tar_ang1, tar_ang2 = tar_ang2, ancescols = ancescols, arrow = arrow, angle_df = angle_df, tar.lab.cex = tar.lab.cex, tar.lab.col = tar.lab.col, arrow.col = arrow.col, arrow.lwd = arrow.lwd)
   }
 
   #Draw the legend showing the names of ancestry components 

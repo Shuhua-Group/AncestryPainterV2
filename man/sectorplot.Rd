@@ -6,11 +6,12 @@
 \usage{
 sectorplot(Q, ind, target = NULL, poporder = NULL, ancescols = NULL,
   sort_order = FALSE, rmin = 2, rmax = 3.7, tar.r = 0.6,
-  amin = -265, amax = 85, tar_ang1 = 0, tar_ang2 = 360,
-  arrow = FALSE, legend_mode = FALSE, ancesnames = NULL,
-  prgap = 0.2, noline = FALSE, pop.lab.cex = NULL,
-  pop.lab.col = "black", tar.lab.cex = 6, tar.lab.col = "navy",
-  arrow.col = "red", arrow.lwd = 2, legend.pos = "topright")
+  cendis = 1, amin = -265, amax = 85, tar_ang1 = 0,
+  tar_ang2 = 360, arrow = FALSE, legend_mode = FALSE,
+  ancesnames = NULL, prgap = 0.2, noline = FALSE,
+  pop.lab.cex = NULL, pop.lab.col = "black", tar.lab.cex = 6,
+  tar.lab.col = "navy", arrow.col = "red", arrow.lwd = 2,
+  legend.pos = "topright")
 }
 \arguments{
 \item{Q}{A numeric data frame of ancestry proportion (columns: ancestry componenyt; rows: individual). e.g., an output ".Q" file of the softaware ADMIXTURE.}
@@ -30,6 +31,8 @@ sectorplot(Q, ind, target = NULL, poporder = NULL, ancescols = NULL,
 \item{rmax}{The radium of the outer ring. Default is 3.7.}
 
 \item{tar.r}{The radius of the target pie chart. Defualt: 0.6.}
+
+\item{cendis}{The distance from the center of a target pie chart to the center of the sectorplot. Default: 1.}
 
 \item{amin}{The angle at which the ring is initiated. Defualt is -265.}
 
@@ -55,7 +58,7 @@ sectorplot(Q, ind, target = NULL, poporder = NULL, ancescols = NULL,
 
 \item{tar.lab.cex}{The cex of the target label.}
 
-\item{tar.lab.col}{The color of the target label. Default: "navy" (namely, colors()[490])}
+\item{tar.lab.col}{The color of the target label. Default: "navy".}
 
 \item{arrow.col}{The color of the arrow(s). Default: "red".}
 

@@ -31,7 +31,7 @@ exp_cols <- read.table('./inst/extdata/exp_ances.8.color', stringsAsFactors = F,
 
 # Graphing
 pdf("exp_ances.8.pdf", width = 45, height = 45)
-  sectorplot(Q = exp_q, ind = exp_ind, target = c("Yoruba", "French", "Han"), poporder = exp_order$V1, popgroup = exp_order$V2, ancescols = exp_cols, tar_ang1 = 90, tar_ang2 = 450, legend_mode = T)
+  sectorplot(Q = exp_q, ind = exp_ind, target = c("Yoruba", "French", "Han"), poporder = exp_order$V1, pop.lab.col = exp_order$V2, ancescols = exp_cols, tar_ang1 = 90, tar_ang2 = 330, legend_mode = T)
 dev.off()
 ```
 ![](inst/figures/exp_ances.8.jpg)<!-- -->
