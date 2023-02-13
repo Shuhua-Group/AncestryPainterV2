@@ -5,13 +5,13 @@
 \title{Sector plot}
 \usage{
 sectorplot(Q, ind, target = NULL, poporder = NULL, ancescols = NULL,
-  sort_order = FALSE, rmin = 2, rmax = 3.7, tar.r = 0.6,
-  cendis = 1, amin = -265, amax = 85, tar_ang1 = 0,
-  tar_ang2 = 360, arrow = FALSE, legend_mode = FALSE,
+  sorting = FALSE, rmin = 2, rmax = 3.7, tar.r = 0.6,
+  tarangs = NULL, cendis = 1, amin = -265, amax = 85,
+  tarang1 = 0, tarang2 = 180, arrow = FALSE, legend_mode = FALSE,
   ancesnames = NULL, prgap = 0.2, noline = FALSE,
-  pop.lab.cex = NULL, pop.lab.col = "black", tar.lab.cex = 6,
-  tar.lab.col = "navy", arrow.col = "red", arrow.lwd = 2,
-  legend.pos = "topright")
+  pop.lab.cex = NULL, pop.lab.col = "black", pop.lab.font = 1,
+  tar.lab.cex = 6, tar.lab.col = "navy", arrow.col = "red",
+  arrow.lwd = 2, legend.pos = "topright")
 }
 \arguments{
 \item{Q}{A numeric data frame of ancestry proportion (columns: ancestry componenyt; rows: individual). e.g., an output ".Q" file of the softaware ADMIXTURE.}
@@ -24,23 +24,25 @@ sectorplot(Q, ind, target = NULL, poporder = NULL, ancescols = NULL,
 
 \item{ancescols}{The color code of each ancestry component in the figure.}
 
-\item{sort_order}{A logical value to define whether to sort the order of the populations, which will be musked if "poporder" is specified.}
+\item{sorting}{A logical value to define whether to sort the order of the populations, which will be musked if "poporder" is specified.}
 
 \item{rmin}{The radium of the inner ring. Default is 2.}
 
 \item{rmax}{The radium of the outer ring. Default is 3.7.}
 
-\item{tar.r}{The radius of the target pie chart. Defualt: 0.6.}
+\item{tar.r}{A numeric vector. The radius of the target pie chart. Defualt: 0.6.}
 
-\item{cendis}{The distance from the center of a target pie chart to the center of the sectorplot. Default: 1.}
+\item{tarangs}{A numeric vector. The angles of the target pie charts.}
+
+\item{cendis}{A numeric vector. The distance from the center of a target pie chart to the center of the sectorplot. Default: 1.}
 
 \item{amin}{The angle at which the ring is initiated. Defualt is -265.}
 
 \item{amax}{The angle at which the ring is ended. Default is 85.}
 
-\item{tar_ang1}{The start angle of the target leyout. Default is 0.}
+\item{tarang1}{The start angle of the target leyout. Default is 0.}
 
-\item{tar_ang2}{The end angle of the target leyout. Defualt is 360.}
+\item{tarang2}{The end angle of the target leyout. Defualt is 360.}
 
 \item{arrow}{Logical. Whether to draw the arrows to the target pies.}
 
@@ -55,6 +57,8 @@ sectorplot(Q, ind, target = NULL, poporder = NULL, ancescols = NULL,
 \item{pop.lab.cex}{The cex of the population labels.}
 
 \item{pop.lab.col}{The color of population labels. The length of this parameter can be 1 or equal to the number of the populations.Default: "black".}
+
+\item{pop.lab.font}{The font of the population labels.}
 
 \item{tar.lab.cex}{The cex of the target label.}
 

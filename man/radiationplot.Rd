@@ -4,34 +4,36 @@
 \alias{radiationplot}
 \title{Radiation plot}
 \usage{
-radiationplot(data, target = "target", cenvals = c(0.5, 0.5),
-  sorting = FALSE, layers = NULL, num = 4, amax = -250,
-  amin = 70, border = 0.3, rstart = 0.02, flat = 1.2,
-  label_mode = TRUE, pop.lab.cex = 0.7, pop.lab.font = 1,
-  pop.lab.col = "navy", legend_mode = FALSE, legend.pos = "topright",
-  legend.lwd = 5, legend.text.cex = 1, ring.text.col = "black",
-  ring.text.cex = 1, ring.text.font = 1, ring.line.col = "gray",
-  tar.lab.col = "black", tar.lab.cex = 1.1, tar.lab.font = 1,
-  core.line.col = "black")
+radiationplot(data, target = "target", sorting = FALSE,
+  layers = NULL, num = 4, digits = 2, cenvals = c(0.5, 0.5),
+  border = 0.3, amax = -250, amin = 70, rstart = 0.02,
+  flat = 1.2, label_mode = TRUE, pop.lab.cex = 0.7,
+  pop.lab.font = 1, pop.lab.col = "navy", legend_mode = FALSE,
+  legend.pos = "topright", legend.lwd = 5, legend.text.cex = 1,
+  ring.text.col = "black", ring.text.cex = 1, ring.text.font = 1,
+  ring.line.col = "gray", tar.lab.col = "black", tar.lab.cex = 1.1,
+  tar.lab.font = 1, core.line.col = "black")
 }
 \arguments{
 \item{data}{A four-column data frame. 1: population label (character); 2: region label (character); 3: genetic difference (numeric); 4: color code.}
 
 \item{target}{A character value to pass name of the target population. Default is "target".}
 
-\item{cenvals}{The coordinates of the center of the circle. Default is c(0.5, 0.5).}
-
 \item{sorting}{Logical. Whether to sort population order according to their genetic difference. Default is FALSE.}
 
-\item{layers}{Numeric values of layers. This parameter will musk "num" if specified.}
+\item{layers}{Numeric values of layers. This parameter will mask "num" if specified.}
 
 \item{num}{An integer. Default is 4. Layer number.}
+
+\item{digits}{A float number. The decimal space that the genetic distance should be rounded to. Default is 2.}
+
+\item{cenvals}{The coordinates of the center of the circle. Default is c(0.5, 0.5).}
+
+\item{border}{A numeric value. The limits of the plot is (-border, border). Default is 0.3.}
 
 \item{amax}{Numeric. Maximal angle of radiation bars. Default is -250.}
 
 \item{amin}{Numeric. Minimal angle of radiation bars. Default is 70.}
-
-\item{border}{A numeric value of border. Default is 0.3.}
 
 \item{rstart}{A numeric value of radius. Default is 0.02.}
 

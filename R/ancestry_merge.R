@@ -3,7 +3,7 @@ compare_files <- function(ref_data, target_ancestry_file_name, K){
   col_match <- c() ## pairs of ancestry components
   ancref <- ref_data
   rownames(ancref) <- ancref$V1
-  anctar <- read.table(target_ancestry_file_name, header = F)
+  anctar <- utils::read.table(target_ancestry_file_name, header = F)
   
   rownames(anctar) <- anctar$V1
   overlapsample <- intersect(rownames(ancref), rownames(anctar))
@@ -13,7 +13,7 @@ compare_files <- function(ref_data, target_ancestry_file_name, K){
     largest_cor <- 0.0
     second_cor <- 0.0
     for( col2 in colnames(anctar)[3:ncol(ancref)]){
-      corr <- cor(x = ancref[overlapsample,col1], y = anctar[overlapsample,col2], method = "pearson")
+      corr <- stats::cor(x = ancref[overlapsample,col1], y = anctar[overlapsample,col2], method = "pearson")
       if( corr > largest_cor ){
         second_cor <- largest_cor
         largest_cor <- corr
@@ -29,7 +29,7 @@ compare_files <- function(ref_data, target_ancestry_file_name, K){
 
   if( length( unique(names(col_match)) ) > length( unique(col_match)) ){
     multi_col_match <- c()
-    combs <- combn(names(col_match), 2)
+    combs <- utils::combn(names(col_match), 2)
     for( j in 1:ncol(combs) ){
       if( col_match[combs[1, j]] == col_match[combs[2, j]] ) multi_col_match <- c(multi_col_match, combs[1, j], combs[2, j])
     }
@@ -72,7 +72,7 @@ merge_files <- function(ref_data, target_ancestry_file_list, K){
   ## merge consensus ancestry file
   merging <- data.frame()
   for(y in result) if(is.data.frame(y)) merging <- rbind(merging, y)
-  merging <- aggregate(merging[, 3:ncol(merging)], by = list(merging[,1], merging[,2]), FUN = mean)    
+  merging <- stats::aggregate(merging[, 3:ncol(merging)], by = list(merging[,1], merging[,2]), FUN = mean)    
   return(list(counting, merging)) 
 }
 
@@ -81,7 +81,7 @@ merge_files <- function(ref_data, target_ancestry_file_list, K){
 #'
 #' This function draws a radiation plot to visualize the genetic distance
 #'
-#' @param tar_anc_filelist Character. Required. ancestry file names (recomended format: prefix.K.ancestry). The ancestry matrix file should be(2 + K) columns without header. The columns: 1st-ndividual ID; 2nd-Group ID. From the 3rd column, it indicates the ancestry proportion.
+#' @param tar_anc_filelist Character. Required. ancestry file names (recomended format: prefix.K.ancestry). The ancestry matrix file should be(2 + K) columns without header. The columns: 1st-Individual ID; 2nd-Group ID. From the 3rd column, it indicates the ancestry proportion.
 #' @param ref Character. Required. The reference ancestry matrix to be matched.
 #' @param K Integer. Required. The number of the ancestry components.
 #' @param poporder Character. (optional, input files) Population order list.
@@ -91,7 +91,7 @@ ancmerge <- function(tar_anc_filelist, ref, K, poporder = NULL){
 
   cat(c("Time:", as.character(Sys.time()), "Path:", getwd()), sep = "\n")
  
-  ref_data <- read.table(ref, sep = "", header = FALSE)
+  ref_data <- utils::read.table(ref, sep = "", header = FALSE)
   
   consensus_filelist <<- c()
   conflict_filelist <<- c()
@@ -121,7 +121,7 @@ ancmerge <- function(tar_anc_filelist, ref, K, poporder = NULL){
   merging <- remerging
 
   ## sorting components
-  popmean <- aggregate(merging[, 3:ncol(merging)], by = list(merging[, 2]), FUN = mean);
+  popmean <- stats::aggregate(merging[, 3:ncol(merging)], by = list(merging[, 2]), FUN = mean);
   rownames(popmean) <- popmean[, "Group.1"]
   popmean <- subset(popmean, select = - Group.1)
   resorting <- data.frame()

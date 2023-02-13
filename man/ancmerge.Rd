@@ -7,7 +7,7 @@
 ancmerge(tar_anc_filelist, ref, K, poporder = NULL)
 }
 \arguments{
-\item{tar_anc_filelist}{Character. Required. ancestry file names (recomended format: prefix.K.ancestry). The ancestry matrix file should be(2 + K) columns without header. The columns: 1st-ndividual ID; 2nd-Group ID. From the 3rd column, it indicates the ancestry proportion.}
+\item{tar_anc_filelist}{Character. Required. ancestry file names (recomended format: prefix.K.ancestry). The ancestry matrix file should be(2 + K) columns without header. The columns: 1st-Individual ID; 2nd-Group ID. From the 3rd column, it indicates the ancestry proportion.}
 
 \item{ref}{Character. Required. The reference ancestry matrix to be matched.}
 
