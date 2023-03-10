@@ -123,6 +123,7 @@ Target_arrow <- function(orig, rmin, tar.r, angle_df, tar_cen, tar, arrow.col = 
   arrow_start <- tar_cen + vec/extd_ratio
 
   graphics::arrows(x0 = arrow_start[1], y0 = arrow_start[2], x1 = arrow_end[1], y1 = arrow_end[2], length = 0.25, angle = 30, code = 2, col = arrow.col, lwd = arrow.lwd)
+  # Done.
 }
 
 
@@ -171,7 +172,7 @@ Draw_target_pie <- function(orig, rmin, target, ancescols, tar.r = 0.6, tarangs 
     }
 
   }
-  # Finish
+  # Done.
 }
 
 ######################### VI. Write all population name############################
@@ -188,17 +189,25 @@ Write_pop_lab <- function(amax, amin, rmax, rmin, prgap, npop, poporder, pop.lab
   angpre <- amin
   lend <- rmax - prgap * (rmax - rmin)/Knum
 
+  # Text size
   if(is.null(pop.lab.cex)){
+    # To get a proper text size if it is not specified.
     cex_no <- 220/npop
-    if(cex_no > 6){
+    if(cex_no >= 6){
       cex_no <- rep(6, npop)
-    }else if(cex_no < 1.5){
+    }else if(cex_no <= 1.5){
       cex_no <- rep(1.5, npop)
+    }else{
+      cex_no <- rep(cex_no, npop)
     }
   }else{
     cex_no <- coercion(pop.lab.cex, npop)
   }
+  
+  # Text color
   text_col <- coercion(pop.lab.col, npop)
+
+  # Text font
   text_font <- coercion(pop.lab.font, npop)
   
   for(i in 1:npop){
@@ -210,7 +219,7 @@ Write_pop_lab <- function(amax, amin, rmax, rmin, prgap, npop, poporder, pop.lab
     Write_lab(ang, xx, yy, text, cex_no = cex_no[i], text_col = text_col[i], text_font = text_font[i])
     angpre <- angpre + angelperpop
   }
-  # Done    
+  # Done.    
 }
 
 
@@ -220,6 +229,7 @@ Draw_ances_legend <- function(ancescols, ancesnames, legend.pos = "topright"){
     ancesnames <- paste("Ancestry", 1:length(ancescols), sep = "_")
   }
   graphics::legend(legend.pos, legend = ancesnames, lwd = 5, col = ancescols, cex = 2.00, bty = 'n')
+  # Done.
 }
 
 ####### VII. Plot the whole picture ######
@@ -228,21 +238,21 @@ Draw_ances_legend <- function(ancescols, ancesnames, legend.pos = "topright"){
 #'
 #' This function draws a sector plot to visualize ancestry proportion.
 #'
-#' @param Q A numeric data frame of ancestry proportion (columns: ancestry componenyt; rows: individual). e.g., an output ".Q" file of the softaware ADMIXTURE.
-#' @param ind A two-column data frame (1: population; 2: individual)."
+#' @param Q A numeric data frame of ancestry proportion (columns: ancestry component; rows: individual). e.g., an output ".Q" file of the software ADMIXTURE.
+#' @param ind A two-column data frame (1: population; 2: individual).
 #' @param target Character. The target populations to be plotted as a pie chart in the center of the circle figure. The population must be included in input "ind" and "Q" data frame.
 #' @param poporder Character. The populations to be included in the figure, also the display order of the populations in the figure.
 #' @param ancescols The color code of each ancestry component in the figure.
-#' @param sorting A logical value to define whether to sort the order of the populations, which will be musked if "poporder" is specified.
+#' @param sorting A logical value to define whether to sort the order of the populations, which will be masked if "poporder" is specified.
 #' @param rmin The radium of the inner ring. Default is 2.
 #' @param rmax The radium of the outer ring. Default is 3.7.
-#' @param tar.r A numeric vector. The radius of the target pie chart. Defualt: 0.6.
+#' @param tar.r A numeric vector. The radius of the target pie chart. Default: 0.6.
 #' @param cendis A numeric vector. The distance from the center of a target pie chart to the center of the sectorplot. Default: 1.
-#' @param amin The angle at which the ring is initiated. Defualt is -265.
+#' @param amin The angle at which the ring is initiated. Default is -265.
 #' @param amax The angle at which the ring is ended. Default is 85.
 #' @param tarangs A numeric vector. The angles of the target pie charts.
-#' @param tarang1 The start angle of the target leyout. Default is 0.
-#' @param tarang2 The end angle of the target leyout. Defualt is 360.
+#' @param tarang1 The start angle of the target layout. Default is 0.
+#' @param tarang2 The end angle of the target layout. Default is 360.
 #' @param arrow Logical. Whether to draw the arrows to the target pies.
 #' @param legend_mode Logical. Whether to draw the legend of ancestry components.
 #' @param ancesnames Character. To specify the names of ancestry components. If not specified, would be shown as "Ancestry_1" "Ancestry_2" and so on.

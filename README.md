@@ -107,6 +107,6 @@ List of 4
 8     comp8     Sardinian             10           1.0
  
 # Saving output
-> write.table(results$merged_ancestry, "merged_ancestry.txt", sep = "\t", col.names = F, row.names = F, quote = F)
+> write.table(results$merged_ancestry, "./inst/extdata/merged_ancestry.txt", sep = "\t", col.names = F, row.names = F, quote = F)
 ```
 

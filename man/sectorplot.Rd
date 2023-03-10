@@ -16,7 +16,7 @@ sectorplot(Q, ind, target = NULL, poporder = NULL, ancescols = NULL,
 \arguments{
 \item{Q}{A numeric data frame of ancestry proportion (columns: ancestry componenyt; rows: individual). e.g., an output ".Q" file of the softaware ADMIXTURE.}
 
-\item{ind}{A two-column data frame (1: population; 2: individual)."}
+\item{ind}{A two-column data frame (1: population; 2: individual).}
 
 \item{target}{Character. The target populations to be plotted as a pie chart in the center of the circle figure. The population must be included in input "ind" and "Q" data frame.}
 

@@ -81,7 +81,7 @@ merge_files <- function(ref_data, target_ancestry_file_list, K){
 #'
 #' This function draws a radiation plot to visualize the genetic distance
 #'
-#' @param tar_anc_filelist Character. Required. ancestry file names (recomended format: prefix.K.ancestry). The ancestry matrix file should be(2 + K) columns without header. The columns: 1st-Individual ID; 2nd-Group ID. From the 3rd column, it indicates the ancestry proportion.
+#' @param tar_anc_filelist Character. Required. ancestry file names (recommended name format: prefix.K.ancestry). The ancestry matrix file should be (2 + K) columns without header. The columns: 1st-Individual ID; 2nd-Group ID. From the 3rd column, it indicates the ancestry proportion.
 #' @param ref Character. Required. The reference ancestry matrix to be matched.
 #' @param K Integer. Required. The number of the ancestry components.
 #' @param poporder Character. (optional, input files) Population order list.
