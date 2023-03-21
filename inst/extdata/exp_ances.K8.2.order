@@ -1,216 +1,212 @@
-Egyptian	blue
-Moroccan_Jew	blue
-Tunisian	blue
-Tunisian_Jew	blue
-Libyan_Jew	blue
-Mozabite	blue
-Algerian	blue
-Saharawi	blue
-Ethiopian_Jew	blue
-Oromo	blue
-Somali	blue
-Datog	blue
-Masai	blue
-Kikuyu	blue
-Sandawe	blue
-AA	blue
-Luhya	blue
-Luo	blue
-BantuKenya	blue
-Dinka	blue
-Gambian	blue
-BantuSA	blue
-Mende	blue
-Mandenka	blue
-Wambo	blue
-Esan	blue
-Yoruba	blue
-Khwe	blue
-Nama	blue
-Shua	blue
-Tswana	blue
-Haiom	blue
-Himba	blue
-Damara	blue
-Kgalagadi	blue
-Hadza	blue
-Khomani	blue
-Gana	blue
-Tshwa	blue
-Biaka	blue
-Xuun	red
-Hoan	red
-Mbuti	red
-Naro	red
-Taa_East	red
-Gui	red
-Ju_hoan_South	red
-Taa_North	red
-Taa_West	red
-Ju_hoan_North	red
-Bougainville	red
-Australian	red
-Papuan	red
-Ojibwa	red
-Chilote	red
-Cree	red
-Chane	red
-Wayuu	red
-Chipewyan	red
-Inga	red
-Ticuna	red
-Bolivian	red
-Quechua	red
-Kaqchikel	red
-Mayan	red
-Zapotec	red
-Algonquin	red
-Mixtec	red
-Aymara	red
-Guarani	red
-Piapoco	red
-Mixe	red
-Pima	red
-Cabecar	red
-Karitiana	red
-Surui	red
-Kirgiz	red
-Kyrgyz	red
-Kazak	red
-Kalmyk	red
-Altaian	red
-Uyghur	red
-Uygur	red
-Even	red
-Tuvinian	red
-Uzbek	red
-Mongola	red
-Dolgan	red
-Turkmen	red
-Yukagir	red
-Tubalar	red
-Selkup	red
-Yakut	red
-Mansi	red
-Ulchi	red
-Tlingit	red
-Aleut	red
-Tajik_Pomiri	red
-Chukchi	red
-Nganasan	red
-Koryak	lawngreen
-Itelmen	lawngreen
-Eskimo	lawngreen
-Xibo	lawngreen
-Daur	lawngreen
-Hui	lawngreen
-Tu	lawngreen
-Oroqen	lawngreen
-Hezhen	lawngreen
-Korean	lawngreen
-Han_NChina	lawngreen
-Yi	lawngreen
-Tujia	lawngreen
-Naxi	lawngreen
-Japanese	lawngreen
-Cambodian	lawngreen
-Han	lawngreen
-Kinh	lawngreen
-Thai	lawngreen
-Miao	lawngreen
-She	lawngreen
-Dai	lawngreen
-Lahu	lawngreen
-Ami	lawngreen
-Atayal	lawngreen
-Burmese	lawngreen
-Tagalog	lawngreen
-Malay	lawngreen
-Vietnamese	lawngreen
-Ilocano	lawngreen
-Visayan	lawngreen
-Dusun	lawngreen
-Murut	lawngreen
-Kankanaey	lawngreen
-Onge	lawngreen
-Bengali	lawngreen
-Burusho	lawngreen
-Tiwari	lawngreen
-GujaratiB	lawngreen
-GujaratiA	lawngreen
-Pathan	lawngreen
-Punjabi	lawngreen
-GujaratiC	lawngreen
-Sindhi	lawngreen
-Kusunda	lawngreen
-Vishwabrahmin	lawngreen
-Lodhi	lawngreen
-Mala	lawngreen
-GujaratiD	lawngreen
-Cochin_Jew	lawngreen
-Balochi	lawngreen
-Kharia	lawngreen
-Brahui	lawngreen
-Makrani	lawngreen
-Kalash	lawngreen
-Hazara	lawngreen
-Nogai	lawngreen
-Chuvash	lawngreen
-Balkar	lawngreen
-Turkish	lawngreen
-Kumyk	lawngreen
-North_Ossetian	lawngreen
-Russian	lawngreen
-Iranian	lawngreen
-Mordovian	lawngreen
-Adygei	lawngreen
-Finnish	lawngreen
-Lezgin	lawngreen
-Chechen	lawngreen
-Bulgarian	lawngreen
-Hungarian	lawngreen
-Ukrainian	lawngreen
-Belarusian	lawngreen
-Lebanese	lawngreen
-Estonian	lawngreen
-Czech	lawngreen
-Abkhasian	lawngreen
-Jordanian	lawngreen
-Croatian	lawngreen
-Armenian	lawngreen
-Syrian	lawngreen
-Albanian	lawngreen
-French	lawngreen
-Yemen	lawngreen
-Greek	lawngreen
-Sicilian	lawngreen
-Scottish	lawngreen
-Turkish_Jew	lawngreen
-Norwegian	lawngreen
-BedouinA	lawngreen
-Maltese	lawngreen
-English	lawngreen
-Tuscan	lawngreen
-Georgian	lawngreen
-Ashkenazi_Jew	lawngreen
-Cypriot	lawngreen
-Spanish	lawngreen
-Canary_Islanders	lawngreen
-Palestinian	lawngreen
-Icelandic	lawngreen
-Orcadian	lawngreen
-Lithuanian	lawngreen
-Bergamo	lawngreen
-Italian_South	lawngreen
-Saami_WGA	lawngreen
-Georgian_Jew	lawngreen
-Iranian_Jew	lawngreen
-Iraqi_Jew	lawngreen
-French_South	lawngreen
-Spanish_North	lawngreen
-Druze	lawngreen
-Saudi	lawngreen
-Basque	lawngreen
-Yemenite_Jew	lawngreen
-Sardinian	lawngreen
-BedouinB	lawngreen
+Egyptian
+Moroccan_Jew
+Tunisian
+Tunisian_Jew
+Libyan_Jew
+Mozabite
+Algerian
+Saharawi
+Ethiopian_Jew
+Oromo
+Somali
+Datog
+Masai
+Kikuyu
+Sandawe
+AA
+Luhya
+Luo
+BantuKenya
+Dinka
+Gambian
+BantuSA
+Mende
+Mandenka
+Wambo
+Esan
+Yoruba
+Khwe
+Nama
+Shua
+Tswana
+Haiom
+Himba
+Damara
+Kgalagadi
+Hadza
+Khomani
+Gana
+Tshwa
+Biaka
+Xuun
+Hoan
+Mbuti
+Naro
+Taa_East
+Gui
+Ju_hoan_South
+Taa_North
+Taa_West
+Ju_hoan_North
+Bougainville
+Australian
+Papuan
+Ojibwa
+Chilote
+Cree
+Chane
+Wayuu
+Chipewyan
+Inga
+Ticuna
+Bolivian
+Quechua
+Kaqchikel
+Mayan
+Zapotec
+Algonquin
+Mixtec
+Aymara
+Guarani
+Piapoco
+Mixe
+Pima
+Cabecar
+Karitiana
+Surui
+Kyrgyz
+Kalmyk
+Altaian
+Uygur
+Even
+Tuvinian
+Uzbek
+Mongola
+Dolgan
+Turkmen
+Yukagir
+Tubalar
+Selkup
+Yakut
+Mansi
+Ulchi
+Tlingit
+Aleut
+Tajik_Pomiri
+Chukchi
+Nganasan
+Koryak
+Itelmen
+Eskimo
+Xibo
+Daur
+Tu
+Oroqen
+Hezhen
+Korean
+Han_NChina
+Yi
+Tujia
+Naxi
+Japanese
+Cambodian
+Han
+Kinh
+Thai
+Miao
+She
+Dai
+Lahu
+Ami
+Atayal
+Burmese
+Tagalog
+Malay
+Vietnamese
+Ilocano
+Visayan
+Dusun
+Murut
+Kankanaey
+Onge
+Bengali
+Burusho
+Tiwari
+GujaratiB
+GujaratiA
+Pathan
+Punjabi
+GujaratiC
+Sindhi
+Kusunda
+Vishwabrahmin
+Lodhi
+Mala
+GujaratiD
+Cochin_Jew
+Balochi
+Kharia
+Brahui
+Makrani
+Kalash
+Hazara
+Nogai
+Chuvash
+Balkar
+Turkish
+Kumyk
+North_Ossetian
+Russian
+Iranian
+Mordovian
+Adygei
+Finnish
+Lezgin
+Chechen
+Bulgarian
+Hungarian
+Ukrainian
+Belarusian
+Lebanese
+Estonian
+Czech
+Abkhasian
+Jordanian
+Croatian
+Armenian
+Syrian
+Albanian
+French
+Yemen
+Greek
+Sicilian
+Scottish
+Turkish_Jew
+Norwegian
+BedouinA
+Maltese
+English
+Tuscan
+Georgian
+Ashkenazi_Jew
+Cypriot
+Spanish
+Canary_Islanders
+Palestinian
+Icelandic
+Orcadian
+Lithuanian
+Bergamo
+Italian_South
+Saami_WGA
+Georgian_Jew
+Iranian_Jew
+Iraqi_Jew
+French_South
+Spanish_North
+Druze
+Saudi
+Basque
+Yemenite_Jew
+Sardinian
+BedouinB
