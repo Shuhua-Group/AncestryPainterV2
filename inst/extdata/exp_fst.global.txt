@@ -64,7 +64,6 @@ Karitiana	America	0.14137	lightcyan3
 Cabecar	America	0.14188	lightcyan3
 Surui	America	0.15164	lightcyan3
 Kazakh	CentralAsiaSiberia	0.002452	tan1
-Kirgiz	CentralAsiaSiberia	0.0036729	tan1
 Kyrgyz	CentralAsiaSiberia	0.0036832	tan1
 Uygur	CentralAsiaSiberia	0.0051382	tan1
 Kalmyk	CentralAsiaSiberia	0.0064687	tan1
