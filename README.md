@@ -11,9 +11,13 @@ You can install our software by devtools given good network connectivity.
 ```
 devtools::install_github("Shuhua-Group/AncestryPainterV2")
 ```
-Alternatively, you can obtain the compressed package manually, and install it by R command like:
+Alternatively, you can obtain the compressed source code package manually, and install it by R command like:
 ```
-install.packages("/path/to/the/package/AncestryPainterV2.0.0.tar.gz")
+install.packages("/path/to/the/package/AncestryPainterV2-1.0.tar.gz")
+```
+or
+```
+install.packages("/path/to/the/package/AncestryPainterV2-1.0.zip")
 ```
 
 AncestryPainterV2 is developed based on ```R 3.3.3 "Another Canoe"```. The graphing and statistical functions of AncestryPainterV2 are achieved by invoking these attached base packages of R.
