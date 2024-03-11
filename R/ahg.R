@@ -38,14 +38,19 @@ topoInfer <- function(ancestry, ances_tuple, times, num, prop){
                        "topo3" = corr(y,z,x))
     cor_mat <- rbind(cor_mat, cors)
   }
-  
+
   hit <- colnames(cor_mat)[apply(cor_mat, MARGIN = 1, FUN = which.min)]
   topo_num <- table(hit)
   topo_df <- data.frame("topo1" = c(A, B, C), 
                         "topo2" = c(C, A, B), 
                         "topo3" = c(B, C, A), stringsAsFactors = FALSE)
-  topo_df <- rbind(topo_df, topo_num[c("topo1","topo2","topo3")])
+  topo_df <- rbind(topo_df, topo_num[c("topo1","topo2", "topo3")])
   topo_df[is.na(topo_df)] <- 0    #Transform NA values to zero
+  
+  colnames(cor_mat) <- c(sprintf("(%s,%s:%s)", A, B, C),
+                         sprintf("(%s,%s:%s)", C, A, B),
+                         sprintf("(%s,%s:%s)", B, C, A))
+  
   return(list(topo_df, cor_mat))
 }
 
