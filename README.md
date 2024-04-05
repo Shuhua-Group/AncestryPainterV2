@@ -33,7 +33,7 @@ Generally, if you install ```R``` on your device, it is no need to install or lo
 
 
 ## Usage
-Please refer to the AncestryPainter_V2.manual.v3.pdf for the usage of AncestryPainter.
+Please refer to the AncestryPainter_V2.manual.v4.pdf for the usage of AncestryPainter.
 
 ## Citation & Contact 
 
