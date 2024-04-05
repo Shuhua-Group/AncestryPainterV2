@@ -322,7 +322,7 @@ sectorplot <- function(Q, ind, target = NULL, poporder = NULL, ancescols = NULL,
       poporder <- ances_df[!duplicated(ances_df[, popcol]),][, popcol]
     }
   }
-  #print(poporder) #to debug
+  #print(poporder)
   
   ances_df[,popcol] <- factor(ances_df[,popcol], levels = poporder)
   ances_df <- ances_df[order(ances_df[,popcol]),]
