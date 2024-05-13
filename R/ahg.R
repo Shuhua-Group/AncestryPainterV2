@@ -59,15 +59,15 @@ topoInfer <- function(ancestry, ances_tuple, times, num, prop){
 #' This function infers the admixture topology of ancestry components with supporting counts.
 #'
 #' @param ancestry A numeric data frame of ancestry proportion (columns: ancestry component; rows: individual).
-#' @param component The ancestry components of which the admixture topology is about to be inferred. Default: "all", which mean all the combinations of the input ancestry components will be used.
+#' @param component A character vector containing the ancestry components of which the admixture topology is about to be inferred. By default (if this parameter is not specified), all the combinations of the input ancestry components will be used.
 #' @param times Bootstrap number of admixture topology.
 #' @param num The sampling size. This parameter will be ignored if the parameter "prop" is specified.
 #' @param prop The number of sampled individuals.
 #' @return A list containing 1) possible admixture topologies with supporting counts and 2) matrices of correlation efficient between ancestry components.
 #' @export
-ahg <- function(ancestry, component = "all", times = 1000, num = 10, prop = NULL){
+ahg <- function(ancestry, component = NULL, times = 1000, num = 10, prop = NULL){
   #ancestry <- read.table(opt$file, sep = "", header = TRUE)
-  if(component == "all"){
+  if(is.null(component)){
     ances_list <- colnames(ancestry)
     }else{
     ances_list <- component

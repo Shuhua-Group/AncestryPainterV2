@@ -4,12 +4,12 @@
 \alias{ahg}
 \title{AHG}
 \usage{
-ahg(ancestry, component = "all", times = 1000, num = 10, prop = NULL)
+ahg(ancestry, component = NULL, times = 1000, num = 10, prop = NULL)
 }
 \arguments{
 \item{ancestry}{A numeric data frame of ancestry proportion (columns: ancestry component; rows: individual).}
 
-\item{component}{The ancestry components of which the admixture topology is about to be inferred. Default: "all", which mean all the combinations of the input ancestry components will be used.}
+\item{component}{A character vector containing the ancestry components of which the admixture topology is about to be inferred. By default (if this parameter is not specified), all the combinations of the input ancestry components will be used.}
 
 \item{times}{Bootstrap number of admixture topology.}
 
