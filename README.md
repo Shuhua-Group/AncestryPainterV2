@@ -37,9 +37,11 @@ Please refer to the AncestryPainter_V2.manual.v4.pdf for the usage of AncestryPa
 
 ## Citation & Contact 
 
-If you use AncestryPainterV2 in your project, please cite
- 
-https://github.com/Shuhua-Group/AncestryPainterV2
+If you use AncestryPainterV2 in your project, please cite:
+Chen S, Lei C, Zhao X, Pan Y, Lu D, Xu S. AncestryPainter 2.0: Visualizing ancestry composition and
+admixture history graph. bioRxiv. 2024:2024-04. doi: https://doi.org/10.1101/2024.04.08.588394
+
+Our software is available at https://github.com/Shuhua-Group/AncestryPainterV2
 
 If you have any questions or suggestions, welcome to contact us: chenshh@shanghaitech.edu.cn
 
