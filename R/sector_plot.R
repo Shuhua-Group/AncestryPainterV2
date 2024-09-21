@@ -36,12 +36,10 @@ coercion <- function(x, len){
     }else{
       z <- c(rep(x, times = len %/% len_x), x[1:(len %% len_x)])
     }
-    #warnings("")
   }else if(len_x == len){
     z <- x
   }else{ 
     z <- x[1:len]
-    #warnings("")
   }
   return(z)  
 }
@@ -131,10 +129,15 @@ Draw_target_pie <- function(orig, rmin, target, ancescols, tar.r = 0.6, tarangs 
   num <- length(target)
 
   tar.r <- coercion(tar.r, num) # The vector of target radius is coerced to match the target number.
-  cendis <- coercion(cendis, num)
+  
+  if(is.null(cendis)){
+    cendis <- rep(1, num)
+  }else{
+    cendis <- coercion(cendis, num)
+  }
 
   if(sum(cendis + tar.r >= rmin) > 0){
-    warnings("Your target pie charts may exceed the inner ring.")
+    cat("Your target pie charts may exceed the inner ring.\n")
   }
   
   if(is.null(tarangs)){
@@ -246,6 +249,7 @@ Draw_ances_legend <- function(ancescols, ancesnames, legend.pos = "topright"){
 #' @param sorting A logical value to define whether to sort the order of the populations, which will be masked if "poporder" is specified.
 #' @param rmin The radium of the inner ring. Default is 2.
 #' @param rmax The radium of the outer ring. Default is 3.7.
+#' @param scaxis A positive numeric value less than or equal to 1. This parameter determines the area proportion of the sector plot relative to the canvas. Default: 1. Recommended range: [0.5,1]. Input values exceeding the range (0,1] would be corrected as 1.
 #' @param tar.r A numeric vector. The radius of the target pie chart. Default: 0.6.
 #' @param cendis A numeric vector. The distance from the center of a target pie chart to the center of the sectorplot. Default: 1.
 #' @param amin The angle at which the ring is initiated. Default is -265.
@@ -269,7 +273,7 @@ Draw_ances_legend <- function(ancescols, ancesnames, legend.pos = "topright"){
 #' @return NULL
 #' @export
 sectorplot <- function(Q, ind, target = NULL, poporder = NULL, ancescols = NULL, sorting = FALSE,
-                       rmin = 2, rmax = 3.7, tar.r = 0.6, tarangs = NULL, cendis = 1, amin = -265, amax = 85, tarang1 = 0, tarang2 = 180, 
+                       rmin = 2, rmax = 3.7, scaxis = 1, tar.r = 0.6, tarangs = NULL, cendis = 1, amin = -265, amax = 85, tarang1 = 0, tarang2 = 180, 
                        arrow = FALSE, legend_mode = FALSE, ancesnames = NULL, prgap = 0.2, noline = FALSE, 
                        pop.lab.cex = NULL, pop.lab.col = "black", pop.lab.font = 1,
                        tar.lab.cex = 6, tar.lab.col = "navy", arrow.col = "red", arrow.lwd = 2,
@@ -364,11 +368,17 @@ sectorplot <- function(Q, ind, target = NULL, poporder = NULL, ancescols = NULL,
   ###Plot###
   #beginning of the plot
   #set the canvas
-  graphics::par('oma'=c(10, 10, 10, 10))
+  #graphics::par('oma'=c(10, 10, 10, 10))
   graphics::par('mar'=c(20, 20, 20, 20))
   graphics::par('xpd'=TRUE)
-  graphics::plot(0, 0, xlim=c(-rmax, rmax), ylim=c(-rmax, rmax), axes=F, ann=F, type='n')
+  graphics::plot(0, 0, xlim=c(-rmax/scaxis, rmax/scaxis), ylim=c(-rmax/scaxis, rmax/scaxis), 
+                 axes=F, ann=F, type='n')
 
+  if( (scaxis <= 0) || (scaxis > 1) ){
+    scaxis <- 1
+    cat('The parameter "scaxis" has been corrected to 1.\n')
+  }
+  
   #Paint ancestry of each individual in each population
   angle_df <- Paint_ind_in_pop(data = ances_df, rmin = rmin, rmax = rmax, 
                                amax = amax, amin = amin, prgap = prgap, popsize = popsize, npop = npop,

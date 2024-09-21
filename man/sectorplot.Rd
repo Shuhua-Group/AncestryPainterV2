@@ -13,6 +13,7 @@ sectorplot(
   sorting = FALSE,
   rmin = 2,
   rmax = 3.7,
+  scaxis = 1,
   tar.r = 0.6,
   tarangs = NULL,
   cendis = 1,
@@ -51,6 +52,8 @@ sectorplot(
 \item{rmin}{The radium of the inner ring. Default is 2.}
 
 \item{rmax}{The radium of the outer ring. Default is 3.7.}
+
+\item{scaxis}{A positive numeric value less than or equal to 1. This parameter determines the area proportion of the sector plot relative to the canvas. Default: 1. Recommended range: [0.5,1]. Input values exceeding the range (0,1] would be corrected as 1.}
 
 \item{tar.r}{A numeric vector. The radius of the target pie chart. Default: 0.6.}
 
