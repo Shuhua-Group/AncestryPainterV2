@@ -13,11 +13,11 @@ devtools::install_github("Shuhua-Group/AncestryPainterV2")
 ```
 Alternatively, you can obtain the compressed source code package manually, and install it by R command like:
 ```
-install.packages("/path/to/the/package/AncestryPainterV2-1.0.tar.gz")
+install.packages("/path/to/the/package/AncestryPainterV2-[version_ID].tar.gz")
 ```
 or
 ```
-install.packages("/path/to/the/package/AncestryPainterV2-1.0.zip")
+install.packages("/path/to/the/package/AncestryPainterV2-[version_ID].zip")
 ```
 
 AncestryPainterV2 is developed based on ```R 3.3.3 "Another Canoe"```. The graphing and statistical functions of AncestryPainterV2 are achieved by invoking these attached base packages of R.
@@ -38,8 +38,8 @@ Please refer to the AncestryPainter_V2.manual.v5.pdf for the usage of AncestryPa
 ## Citation & Contact 
 
 If you use AncestryPainterV2 in your project, please cite:
-Chen S, Lei C, Zhao X, Pan Y, Lu D, Xu S. AncestryPainter 2.0: Visualizing ancestry composition and
-admixture history graph. bioRxiv. 2024:2024-04. doi: https://doi.org/10.1101/2024.04.08.588394
+
+Chen S, Lei C, Zhao X, Pan Y, Lu D, Xu S. (2024) AncestryPainter 2.0: Visualizing Ancestry Composition and Admixture History Graph. Genome Biol Evol. 16(11):evae249. doi: 10.1093/gbe/evae249.
 
 Our software is available at https://github.com/Shuhua-Group/AncestryPainterV2
 
