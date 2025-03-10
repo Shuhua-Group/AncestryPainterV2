@@ -2,7 +2,7 @@
 
 AncestryPainter is a graphing tool developed by Qidi Feng and Dongsheng Lu in 2018 (https://doi.org/10.1016/j.gpb.2018.05.002). It can visualize the ancestry composition and genetic difference, and merge ancestry proportion matrix output by ancestry inference tools like ADMIXTURE.
 
-Since Aug, 2021, a new version of AncestryPainter has been developed by Shuanghui Chen and her collaborators. Now the related manuscript is under review.
+Since Aug, 2021, a new version of AncestryPainter had been developed by Shuanghui Chen and her collaborators. Now the related manuscript is published.
 
 See DESCRIPTION for more details about our team!
 
