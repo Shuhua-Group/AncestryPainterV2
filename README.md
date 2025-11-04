@@ -1,8 +1,8 @@
 # AncestryPainter
 
-AncestryPainter is a graphing tool developed by Qidi Feng and Dongsheng Lu in 2018 (https://doi.org/10.1016/j.gpb.2018.05.002). It can visualize the ancestry composition and genetic difference, and merge ancestry proportion matrix output by ancestry inference tools like ADMIXTURE.
+AncestryPainter is a graphing tool developed by Qidi Feng and Dongsheng Lu from the PGG at PICB in 2018 (https://doi.org/10.1016/j.gpb.2018.05.002). It can visualize the ancestry composition and genetic difference, and merge ancestry proportion matrix output by ancestry inference tools like ADMIXTURE.
 
-Since Aug, 2021, a new version of AncestryPainter had been developed by Shuanghui Chen and her collaborators. Now the related manuscript is published.
+Since Aug, 2021, a new version of AncestryPainter had been developed by the HUMPOPG at Fudan University. Now the related manuscript is published (https://academic.oup.com/gbe/article/16/11/evae249/7900898).
 
 See DESCRIPTION for more details about our team!
 
@@ -36,18 +36,18 @@ Generally, if you install ```R``` on your device, it is no need to install or lo
 Please refer to the AncestryPainter_V2.manual.v5.pdf for the usage of AncestryPainter.
 
 ## Update log
-### Note on Halo/Bleeding Effect in Sector Plots
+### Note on Halo/Bleeding Effect in Sector Plots (Nov. 04, 2025)
 Some users of AncestryPainter 2.0 have reported a visual artifact in the sector plot, where the outer ring shows a faint halo or color bleeding from the last ancestry component in the ancestry matrix.
 
 This issue typically occurs when the last ancestry component has an extremely small proportion but is still plotted by default (even if as thin as a line).
 
-To address this, we introduced a new parameter, ```pop.thr```, which defines a minimum ancestry proportion threshold for the components in the matrix. For each individual, if any ancestry component???s proportion is below this threshold, it will be ignored and not plotted.
+To address this, we introduced a new parameter, ```pop.thr```, which defines a minimum ancestry proportion threshold for the components in the matrix. For each individual, if any ancestry components proportion is below this threshold, it will be ignored and not plotted.
 
 The threshold is applied to all components to prevent the halo effect from shifting to the second-to-last one.
 
 Default value of the ```pop.thr``` is 5e-5. Please avoid setting this value too big (more than 1e-4 for our example data), as it may exclude meaningful ancestry components and lead to a jagged edge effect. 
 
-If the halo effect does not affect your visualization, you can disable this filtering by setting pop.thr = 0.
+If the halo effect does not affect your visualization, you can disable this filtering by setting ```pop.thr``` = 0.
 
 ## Citation & Contact
 If you use AncestryPainterV2 in your project, please cite:
