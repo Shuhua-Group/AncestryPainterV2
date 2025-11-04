@@ -33,7 +33,8 @@ sectorplot(
   tar.lab.col = "navy",
   arrow.col = "red",
   arrow.lwd = 2,
-  legend.pos = "topright"
+  legend.pos = "topright",
+  pop.thr = 5e-05
 )
 }
 \arguments{
@@ -94,6 +95,8 @@ sectorplot(
 \item{arrow.lwd}{The line width of the arrow(s). Default: 2.}
 
 \item{legend.pos}{The position of the legend. Can be set as "top", "topleft", "topright", "bottom", "bottomleft", "bottomright", "left", and "right".}
+
+\item{pop.thr}{An ancestry proportion threshold for any component in the ancestry matrix. Default: 5e-5. For each individual, the ancestry component with proportion lower than this value will be ignored and not plotted. This parameter is aimed to avoid the outermost halo/bleeding effect of the ring.}
 }
 \description{
 This function draws a sector plot to visualize ancestry proportion.

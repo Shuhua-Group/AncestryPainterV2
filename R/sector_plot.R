@@ -45,7 +45,7 @@ coercion <- function(x, len){
 }
 
 ###########################III. draw sectors#########################################
-Paint_ind_in_pop <- function(data, rmin, rmax, amax, amin, prgap, popsize, npop, ancescols){
+Paint_ind_in_pop <- function(data, rmin, rmax, amax, amin, prgap, popsize, npop, ancescols, pop.thr){
   
   angle_df <- data.frame()
   
@@ -61,12 +61,17 @@ Paint_ind_in_pop <- function(data, rmin, rmax, amax, amin, prgap, popsize, npop,
 
     angle_df <- rbind(angle_df, c(ang1, ang2))
 
-    for (j in Kstart:ncol(data)){                  ################ for each K
+    for (j in Kstart:ncol(data)){                  ################ for each ancestry component
+      if(data[i, j] < pop.thr){
+        next
+      }
       rpost <- rpre + rlen * data[i, j]
       Sector(angle1 = ang1, angle2 = ang2, radius1 = rpre, radius2 = rpost, col = ancescols[j - Kstart + 1])###### draw sector for each K of each individual
       rpre <- rpost
     }
+    
     angpre <- ang2
+    
   }
   
   return(angle_df)
@@ -270,6 +275,7 @@ Draw_ances_legend <- function(ancescols, ancesnames, legend.pos = "topright"){
 #' @param arrow.col The color of the arrow(s). Default: "red".
 #' @param arrow.lwd The line width of the arrow(s). Default: 2.
 #' @param legend.pos The position of the legend. Can be set as "top", "topleft", "topright", "bottom", "bottomleft", "bottomright", "left", and "right".
+#' @param pop.thr An ancestry proportion threshold for any component in the ancestry matrix. Default: 5e-5. For each individual, the ancestry component with proportion lower than this value will be ignored and not plotted. This parameter is aimed to avoid the outermost halo/bleeding effect of the ring. 
 #' @return NULL
 #' @export
 sectorplot <- function(Q, ind, target = NULL, poporder = NULL, ancescols = NULL, sorting = FALSE,
@@ -277,7 +283,7 @@ sectorplot <- function(Q, ind, target = NULL, poporder = NULL, ancescols = NULL,
                        arrow = FALSE, legend_mode = FALSE, ancesnames = NULL, prgap = 0.2, noline = FALSE, 
                        pop.lab.cex = NULL, pop.lab.col = "black", pop.lab.font = 1,
                        tar.lab.cex = 6, tar.lab.col = "navy", arrow.col = "red", arrow.lwd = 2,
-                       legend.pos = "topright"){
+                       legend.pos = "topright", pop.thr = 0.00005){
 
   #bind individual information to ancestry composition in .Q file 
   ances_df <- cbind(ind[,c(2,1)], Q)
@@ -382,7 +388,7 @@ sectorplot <- function(Q, ind, target = NULL, poporder = NULL, ancescols = NULL,
   #Paint ancestry of each individual in each population
   angle_df <- Paint_ind_in_pop(data = ances_df, rmin = rmin, rmax = rmax, 
                                amax = amax, amin = amin, prgap = prgap, popsize = popsize, npop = npop,
-                               ancescols = ancescols)
+                               ancescols = ancescols, pop.thr = pop.thr)
 
   #Write all population labels
   Write_pop_lab(amax = amax, amin = amin, rmax = rmax, rmin = rmin, prgap = prgap,
